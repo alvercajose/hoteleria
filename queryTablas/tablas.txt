@@ -1,0 +1,81 @@
+-- Tabla de usuarios y perfiles de acceso  
+CREATE TABLE usuarios (  
+    id SERIAL PRIMARY KEY,  
+    nombre VARCHAR(100),  
+    correo VARCHAR(100) UNIQUE,  
+    contrasena VARCHAR(255),  
+    perfil VARCHAR(50) -- Ejemplo: Administrador, Recepcionista, etc.  
+);  
+  
+-- Tabla de clientes  
+CREATE TABLE clientes (  
+    id SERIAL PRIMARY KEY,  
+    nombre VARCHAR(100),  
+    telefono VARCHAR(15),  
+    correo VARCHAR(100) UNIQUE,  
+    direccion TEXT  
+);  
+  
+-- Tabla de habitaciones  
+CREATE TABLE habitaciones (  
+    id SERIAL PRIMARY KEY,  
+    numero_habitacion VARCHAR(10) UNIQUE,  
+    tipo_habitacion VARCHAR(50), -- Ejemplo: Sencilla, Doble, Suite  
+    precio DECIMAL(10, 2),  
+    disponibilidad BOOLEAN DEFAULT TRUE  
+);  
+  
+-- Tabla de reservas  
+CREATE TABLE reservas (  
+    id SERIAL PRIMARY KEY,  
+    cliente_id INT REFERENCES clientes(id),  
+    habitacion_id INT REFERENCES habitaciones(id),  
+    fecha_inicio DATE,  
+    fecha_fin DATE,  
+    estado VARCHAR(20) DEFAULT 'Pendiente' -- Ejemplo: Confirmada, Cancelada  
+);  
+  
+-- Tabla de facturación  
+CREATE TABLE facturas (  
+    id SERIAL PRIMARY KEY,  
+    reserva_id INT REFERENCES reservas(id),  
+    fecha_emision DATE,  
+    total DECIMAL(10, 2)  
+);  
+  
+-- Tabla de pagos  
+CREATE TABLE pagos (  
+    id SERIAL PRIMARY KEY,  
+    factura_id INT REFERENCES facturas(id),  
+    monto DECIMAL(10, 2),  
+    fecha_pago DATE,  
+    metodo_pago VARCHAR(50) -- Ejemplo: Efectivo, Tarjeta, etc.  
+);  
+  
+-- Tabla de ingresos  
+CREATE TABLE ingresos (  
+    id SERIAL PRIMARY KEY,  
+    monto DECIMAL(10, 2),  
+    fecha DATE,  
+    concepto VARCHAR(100)  
+);  
+  
+-- Tabla de egresos  
+CREATE TABLE egresos (  
+    id SERIAL PRIMARY KEY,  
+    monto DECIMAL(10, 2),  
+    fecha DATE,  
+    concepto VARCHAR(100)  
+);  
+  
+-- Tabla de reportes (libros)  
+CREATE TABLE reportes (  
+    id SERIAL PRIMARY KEY,  
+    tipo_reporte VARCHAR(50), -- Ejemplo: Libro diario, Registro de huéspedes, etc.  
+    fecha DATE,  
+    contenido TEXT  
+);  
+
+-- Registrar un cliente
+INSERT INTO clientes (nombre, telefono, correo, direccion)  
+VALUES ('Juan Pérez', '123456789', 'juan@example.com', 'Calle Falsa 123');  
