@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import date
 from decimal import Decimal
 
@@ -12,6 +12,8 @@ class IngresoCreate(IngresoBase):
 
 class IngresoOut(IngresoBase):
     id: int
-
+    #model_config = ConfigDict(from_attributes=True)
     class Config:
         from_attributes = True  # reemplazo de orm_mode
+
+

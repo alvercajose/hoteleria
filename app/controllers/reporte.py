@@ -6,7 +6,7 @@ from app.database import SessionLocal
 
 
 def crear_reporte(db: Session, reporte: ReporteCreate):
-    nuevo = Reporte(**reporte.dict())
+    nuevo = Reporte(**reporte.model_dump())
     db.add(nuevo)
     db.commit()
     db.refresh(nuevo)

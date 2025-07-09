@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.models.ingreso import Ingreso
@@ -14,7 +15,7 @@ def get_db():
         db.close()
 
 def crear_ingreso(db: Session, ingreso: IngresoCreate):
-    nuevo = Ingreso(**ingreso.dict())
+    nuevo = Ingreso(**ingreso.model_dump())
     db.add(nuevo)
     db.commit()
     db.refresh(nuevo)
@@ -30,3 +31,4 @@ def crear(ingreso: IngresoCreate, db: Session = Depends(get_db)):
 @router.get("/", response_model=list[IngresoOut])
 def listar(db: Session = Depends(get_db)):
     return listar_ingresos(db)
+

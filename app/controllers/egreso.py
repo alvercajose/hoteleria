@@ -6,7 +6,7 @@ from app.schemas.egreso import EgresoCreate, EgresoOut
 from app.database import SessionLocal
 
 def crear_egreso(db: Session, egreso: EgresoCreate):
-    nuevo = Egreso(**egreso.dict())
+    nuevo = Egreso(**egreso.model_dump())
     db.add(nuevo)
     db.commit()
     db.refresh(nuevo)
