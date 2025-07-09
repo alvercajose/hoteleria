@@ -11,7 +11,7 @@ fastapi
 #venv\Scripts\activate
 
 #INstalar dependencias
-#pip install -r bibliotecas.txt
+#pip install -r requirements.txt
 
 #Levantar el servidor
 #uvicorn app.main:app --reload
