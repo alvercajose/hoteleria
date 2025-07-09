@@ -1,0 +1,17 @@
+pydantic
+sqlalchemy
+dotenv
+fastapi
+
+
+#comandos
+
+##Activar entorno virtual.
+#python -m venv venv
+#venv\Scripts\activate
+
+#INstalar dependencias
+#pip install -r bibliotecas.txt
+
+#Levantar el servidor
+#uvicorn app.main:app --reload
