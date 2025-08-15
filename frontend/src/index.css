@@ -1,0 +1,63 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  margin-top: 50px; /* Si quieres un margen en la parte superior */
+  
+  
+}
+
+body {
+  font-family: 'Noto Serif JP', serif; /* Establece la fuente */
+}
+
+nav {
+  position: absolute; /* Flota sobre todo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Negro semi-transparente */
+  color: white;
+  padding: 12px;
+  z-index: 10; /* Siempre encima de la imagen */
+  
+}
+
+nav a {
+  color: white;
+  margin-right: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+  
+  
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin: 8px;
+  border-radius: 6px;
+  background: #fff;
+  
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+form input, form select {
+  padding: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  box-sizing: border-box;
+   
+}
